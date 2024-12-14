@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Екзамен, Варіант №8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Знайти суму цифр</h1>
+    <input id="num" type="text" value="" placeholder="Введіть число">
+    <p id="result"></p>
+
+    <script>
+        const inputElement = document.getElementById('num');
+        const resultElement = document.getElementById('result');
+
+        inputElement.addEventListener('blur', function () {
+            const inputValue = inputElement.value;
+            let sum = 0;
+
+            if (!isNaN(inputValue)) {
+                for (let char of inputValue) {
+                    if (!isNaN(char) && char !== " ") {
+                        sum += Number(char);
+                    }
+                }
+                resultElement.textContent = `Сума цифр: ${sum}`;
+                resultElement.classList.add('result');
+            } else {
+                resultElement.textContent = "Будь ласка, введіть коректне число!";
+                resultElement.classList.remove('result');
+            }
+        });
+    </script>
+</body>
+</html>
